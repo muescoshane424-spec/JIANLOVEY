@@ -1,162 +1,381 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Catch My Heart ❤️</title>
-<style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For My Spider-Man 🕷️❤️</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-        margin: 0;
-        padding: 0;
-        background: linear-gradient(135deg, #ff4b5c, #ffb84d);
-        font-family: Arial, sans-serif;
-        overflow: hidden;
-        color: white;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      font-family: "Arial", sans-serif;
+      background:
+        radial-gradient(circle at center, #3b0000 0%, #120000 55%, #050505 100%);
+      color: white;
     }
-    #score {
-        position: fixed;
-        top: 10px;
-        left: 50%;
-        transform: translateX(-50%);
-        font-size: 1.5rem;
-        font-weight: bold;
-        background: rgba(0,0,0,0.2);
-        padding: 8px 16px;
-        border-radius: 10px;
+
+    /* Spider-Man web background */
+    .web {
+      position: absolute;
+      width: 700px;
+      height: 700px;
+      border-radius: 50%;
+      opacity: 0.18;
+      background:
+        repeating-radial-gradient(
+          circle,
+          transparent 0 45px,
+          #ffffff 46px 48px
+        );
+      animation: spin 30s linear infinite;
     }
-    #basket {
-        position: fixed;
-        bottom: 20px;
-        width: 80px;
-        height: 40px;
-        background: #fff;
-        border-radius: 10px;
-        border: 3px solid #f44336;
+
+    .web::before,
+    .web::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background:
+        repeating-conic-gradient(
+          from 0deg,
+          transparent 0deg 14deg,
+          white 15deg 16deg
+        );
     }
+
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Floating hearts */
     .heart {
-        position: fixed;
-        width: 30px;
-        height: 30px;
-        background: red;
-        clip-path: polygon(50% 0%, 61% 5%, 75% 19%, 85% 34%, 92% 50%, 100% 68%, 90% 85%, 75% 100%, 50% 90%, 25% 100%, 10% 85%, 0% 68%, 8% 50%, 15% 34%, 25% 19%, 39% 5%);
+      position: absolute;
+      bottom: -50px;
+      font-size: 25px;
+      animation: float 7s linear infinite;
+      opacity: 0.8;
     }
-    #message {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: rgba(255,255,255,0.9);
-        color: #ff4b5c;
-        padding: 20px;
-        border-radius: 15px;
-        text-align: center;
-        font-size: 1.5rem;
-        display: none;
+
+    .heart:nth-child(1) {
+      left: 10%;
+      animation-delay: 0s;
     }
-    #message button {
-        margin-top: 15px;
-        padding: 10px 20px;
-        background: #ffb84d;
-        border: none;
-        border-radius: 10px;
-        cursor: pointer;
-        font-size: 1rem;
-        color: white;
+
+    .heart:nth-child(2) {
+      left: 25%;
+      animation-delay: 2s;
     }
-</style>
+
+    .heart:nth-child(3) {
+      left: 70%;
+      animation-delay: 1s;
+    }
+
+    .heart:nth-child(4) {
+      left: 85%;
+      animation-delay: 3s;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) scale(0.8);
+        opacity: 0;
+      }
+
+      20% {
+        opacity: 0.9;
+      }
+
+      100% {
+        transform: translateY(-110vh) scale(1.4) rotate(20deg);
+        opacity: 0;
+      }
+    }
+
+    /* Main card */
+    .card {
+      position: relative;
+      z-index: 10;
+      width: min(90%, 520px);
+      padding: 45px 30px;
+      text-align: center;
+      border-radius: 30px;
+      background: rgba(15, 15, 15, 0.88);
+      border: 2px solid #e50914;
+      box-shadow:
+        0 0 20px rgba(229, 9, 20, 0.5),
+        0 0 60px rgba(229, 9, 20, 0.2);
+      backdrop-filter: blur(10px);
+      animation: appear 1.2s ease;
+    }
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: scale(0.8) translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    .spiderman {
+      font-size: 75px;
+      margin-bottom: 10px;
+      animation: bounce 2s ease-in-out infinite;
+      filter: drop-shadow(0 0 12px #e50914);
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    h1 {
+      margin: 5px 0 15px;
+      color: #ff2b36;
+      font-size: 32px;
+      text-shadow: 0 0 12px rgba(255, 30, 40, 0.7);
+    }
+
+    p {
+      font-size: 19px;
+      line-height: 1.7;
+      margin: 15px 0;
+    }
+
+    .special {
+      color: #ffb3b8;
+      font-size: 16px;
+      font-style: italic;
+      margin-top: 20px;
+    }
+
+    .question {
+      font-size: 24px;
+      font-weight: bold;
+      margin-top: 25px;
+      color: white;
+    }
+
+    /* Buttons */
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    button {
+      border: none;
+      padding: 14px 24px;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .yes {
+      background: #e50914;
+      color: white;
+      box-shadow: 0 0 15px rgba(229, 9, 20, 0.6);
+    }
+
+    .yes:hover {
+      transform: scale(1.08);
+      background: #ff1f2b;
+      box-shadow: 0 0 25px rgba(255, 30, 40, 0.9);
+    }
+
+    .maybe {
+      background: white;
+      color: #111;
+    }
+
+    .maybe:hover {
+      transform: scale(1.05);
+    }
+
+    #response {
+      margin-top: 25px;
+      min-height: 30px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #ff6972;
+    }
+
+    .signature {
+      margin-top: 25px;
+      font-size: 14px;
+      color: #aaa;
+    }
+
+    /* Mobile */
+    @media (max-width: 600px) {
+      .card {
+        padding: 35px 22px;
+      }
+
+      .spiderman {
+        font-size: 60px;
+      }
+
+      h1 {
+        font-size: 27px;
+      }
+
+      p {
+        font-size: 17px;
+      }
+
+      .question {
+        font-size: 21px;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<div id="score">Score: 0</div>
-<div id="basket"></div>
-<div id="message">
-    <p>You won my heart! 💍<br>Will you be my husband?</p>
-    <button onclick="alert('Yay! 💖')">Yes 💖</button>
-</div>
+  <!-- Spider-Man style web -->
+  <div class="web"></div>
 
-<script>
-    const basket = document.getElementById('basket');
-    const scoreDisplay = document.getElementById('score');
-    const message = document.getElementById('message');
-    let basketX = window.innerWidth / 2 - 40;
-    let score = 0;
-    let gameRunning = true;
+  <!-- Floating hearts -->
+  <div class="heart">❤️</div>
+  <div class="heart">🕷️</div>
+  <div class="heart">❤️</div>
+  <div class="heart">🕸️</div>
 
-    // Position basket initially
-    basket.style.left = basketX + 'px';
+  <!-- Main message -->
+  <div class="card">
 
-    // Keyboard controls
-    document.addEventListener('keydown', e => {
-        if (!gameRunning) return;
-        if (e.key === 'ArrowLeft') basketX -= 20;
-        if (e.key === 'ArrowRight') basketX += 20;
-        basketX = Math.max(0, Math.min(window.innerWidth - 80, basketX));
-        basket.style.left = basketX + 'px';
-    });
+    <div class="spiderman">🕷️</div>
 
-    // Mobile touch controls
-    document.addEventListener('touchmove', e => {
-        if (!gameRunning) return;
-        basketX = e.touches[0].clientX - 40;
-        basketX = Math.max(0, Math.min(window.innerWidth - 80, basketX));
-        basket.style.left = basketX + 'px';
-    });
+    <h1>Hey, My Spider-Man ❤️</h1>
 
-    // Create falling hearts
-    function createHeart() {
-        if (!gameRunning) return;
-        const heart = document.createElement('div');
-        heart.classList.add('heart');
-        heart.style.left = Math.random() * (window.innerWidth - 30) + 'px';
-        heart.style.top = '0px';
+    <p>
+      You may not have spider-sense... 👀
+      <br>
+      but somehow, you managed to crawl
+      <strong>straight into my heart.</strong> 🥹❤️
+    </p>
+
+    <p>
+      So I have a very important mission for you... 🕸️
+    </p>
+
+    <div class="question">
+      Will you watch Spider-Man with me? 🕷️🎬❤️
+    </div>
+
+    <p class="special">
+      Just you and me, a good movie,
+      lots of laughs, and a little bit of
+      superhero magic. 🥰
+      <br><br>
+      Because honestly...
+      <strong>watching Spider-Man with you
+      would make it extra special. ❤️</strong>
+    </p>
+
+    <div class="buttons">
+      <button class="yes" onclick="sayYes()">
+        Yes, my Spider-Man! 🕷️❤️
+      </button>
+
+      <button class="maybe" onclick="sayMaybe()">
+        I'll think about it... 🥺
+      </button>
+    </div>
+
+    <div id="response"></div>
+
+    <div class="signature">
+      🕸️ Made especially for you 🕸️
+    </div>
+
+  </div>
+
+  <script>
+    function sayYes() {
+      document.getElementById("response").innerHTML =
+        "YAYYY! 🥹🕷️❤️ Our Spider-Man movie date is officially ON! 🎬🍿";
+
+      createHearts();
+
+      setTimeout(() => {
+        alert("You said YES! 🕷️❤️🍿");
+      }, 300);
+    }
+
+    function sayMaybe() {
+      document.getElementById("response").innerHTML =
+        "I'll wait for you, Spider-Man... 🥺🕸️❤️";
+    }
+
+    function createHearts() {
+      for (let i = 0; i < 20; i++) {
+        const heart = document.createElement("div");
+
+        heart.innerHTML = Math.random() > 0.5 ? "❤️" : "🕷️";
+
+        heart.style.position = "fixed";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.bottom = "-30px";
+        heart.style.fontSize = (20 + Math.random() * 25) + "px";
+        heart.style.zIndex = "100";
+        heart.style.pointerEvents = "none";
+
         document.body.appendChild(heart);
 
-        let heartY = 0;
-        const fall = setInterval(() => {
-            if (!gameRunning) {
-                heart.remove();
-                clearInterval(fall);
-                return;
+        const animation = heart.animate(
+          [
+            {
+              transform: "translateY(0) rotate(0deg)",
+              opacity: 1
+            },
+            {
+              transform:
+                `translateY(-110vh) rotate(${Math.random() * 360}deg)`,
+              opacity: 0
             }
-            heartY += 4;
-            heart.style.top = heartY + 'px';
+          ],
+          {
+            duration: 3000 + Math.random() * 2500,
+            easing: "ease-out"
+          }
+        );
 
-            // Collision check
-            const basketRect = basket.getBoundingClientRect();
-            const heartRect = heart.getBoundingClientRect();
-            if (
-                heartRect.bottom >= basketRect.top &&
-                heartRect.left >= basketRect.left &&
-                heartRect.right <= basketRect.right
-            ) {
-                score++;
-                scoreDisplay.textContent = 'Score: ' + score;
-                heart.remove();
-                clearInterval(fall);
-
-                if (score >= 15) {
-                    endGame();
-                }
-            }
-
-            // Remove if falls off screen
-            if (heartY > window.innerHeight) {
-                heart.remove();
-                clearInterval(fall);
-            }
-        }, 20);
-
-        // Spawn next heart
-        setTimeout(createHeart, 800 + Math.random() * 600);
+        animation.onfinish = () => heart.remove();
+      }
     }
-
-    function endGame() {
-        gameRunning = false;
-        message.style.display = 'block';
-    }
-
-    createHeart();
-</script>
+  </script>
 
 </body>
 </html>
+```
